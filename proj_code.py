@@ -103,3 +103,26 @@ def time_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
+
+def station_stats(df):
+    """Displays statistics on the most popular stations and trip."""
+
+    print('\nCalculating The Most Popular Stations and Trip...\n')
+    start_time = time.time()
+
+    # display most commonly used start station
+    popular_start_station = df['Start Station'].value_counts().idxmax()
+    print('\nMost Commonly Used Start Station:\n', popular_start_station)
+
+    # display most commonly used end station
+    popular_end_station = df['End Station'].value_counts().idxmax()
+    print('\nMost Commonly Used End Station:\n', popular_end_station)
+
+    # display most frequent combination of start station and end station trip
+    popular_combination = df.groupby(['Start Station','End Station']).size().idxmax()
+    print('\nMost Frequent Combination of Start Station and End Station Trip:\n', popular_combination)
+
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
