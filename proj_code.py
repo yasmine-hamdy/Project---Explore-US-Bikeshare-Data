@@ -144,3 +144,30 @@ def trip_duration_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+
+def user_stats(df):
+    """Displays statistics on bikeshare users."""
+
+    print('\nCalculating User Stats...\n')
+    start_time = time.time()
+
+    # Display counts of user types
+    user_types = df['User Type'].value_counts()
+    print('\nCounts of User Types:\n', user_types)
+
+    try:
+        # Display counts of gender
+        counts_gender = df['Gender'].value_counts()
+        print('\nCounts of Gender:\n', counts_gender)
+        # Display earliest, most recent, and most common year of birth
+        earliest_year = int(df['Birth Year'].min())
+        recent_year = int(df['Birth Year'].max())
+        popular_year = int(df['Birth Year'].value_counts().idxmax())
+        print('\nYear of Birth:\n')
+        print(pd.Series(data = [earliest_year, recent_year, popular_year], index = ['Earliest', 'Most Recent', 'Most Common']))
+    except KeyError:
+        print('\n')
+
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
+
