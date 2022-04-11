@@ -4,3 +4,8 @@ for three major cities in the United States—Chicago, New York City, and Washin
 Then, I answer interesting questions about it by computing descriptive statistics. 
 I wrote a script that takes in raw input to create an interactive experience in 
 the terminal to present these statistics.
+
+# Software Requirements
+* Python 3
+* Numpy and Pandas installed using Anaconda
+* A terminal application
