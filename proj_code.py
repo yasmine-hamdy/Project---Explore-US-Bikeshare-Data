@@ -171,3 +171,28 @@ def user_stats(df):
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+
+def main():
+    while True:
+        city, month, day = get_filters()
+        df = load_data(city, month, day)
+
+        time_stats(df)
+        station_stats(df)
+        trip_duration_stats(df)
+        user_stats(df)
+
+        answer = input('\nWould you like to see the first 5 rows of the raw data?\n').lower()
+        while answer == 'yes':
+            print(df.head(5))
+            df.drop(index = df.index[:5], inplace = True)
+            answer = input('\nWould you like to see 5 more rows of the data?\n')
+
+
+        restart = input('\nWould you like to restart? Enter yes or no.\n')
+        if restart.lower() != 'yes':
+            break
+
+
+if __name__ == "__main__":
+	main()
